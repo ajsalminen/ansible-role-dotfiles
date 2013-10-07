@@ -1,0 +1,13 @@
+---
+
+    - name: Create hidden directory for dotfile checkouts.
+      file: state=directory path={{home}}/.dotfiles 
+
+    - name: Check out dotfile repos to hidden directory.
+      git: repo={{ item.source }} dest={{home}}/.dotfiles/{{item.name}} version={{ item.version }}
+      with_items: dotfile_repos
+      when: dotfile_repos is defined
+
+    - name: Sync repos to home.
+      command: /usr/bin/rsync -r --exclude=.git {{home}}/.dotfiles/{{item.name}}/ {{home}}/ 
+      with_items: dotfile_repos
