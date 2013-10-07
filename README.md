@@ -5,7 +5,7 @@ Ansible role for pulling dotfiles to your home for per-app repositories a bit li
 
 # Usage
 
-Clone the repo to the roles directory of you ansible playbook. Create an inventory with something like this:
+Clone the repo to the roles directory of you ansible playbook (I have it as roles/dotfiles). Create an inventory with something like this:
 
     [dev]
     localhost
